@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Notes-App</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'notes.css' %}">
+</head>
+
+<body>
+<h1>Notatki</h1>
+<div>
+    <ul>
+        {% for note in notes.all %}
+            <textarea>{{ note.text }}</textarea>
+        {% endfor %}
+    </ul>
+</div>
+
+<div id="content2">
+    <h2>Dodaj notatkę</h2>
+    <form method="POST" action="">
+        <input type="submit" value="Dodaj notatkę">
+        {% csrf_token %}
+        {{ form.as_p }}
+    </form>
+</div>
+</body>
+</html>
